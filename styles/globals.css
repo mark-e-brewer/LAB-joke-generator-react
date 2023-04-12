@@ -3,9 +3,16 @@
 html,
 body {
   padding: 0;
+  height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
@@ -19,4 +26,20 @@ a {
 
 body {
   background-color: #88effd;
+}
+
+.navbar {
+  /* Add any styles specific to your navbar */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Set any other styles such as background color, height, padding, etc. */
+}
+
+.web-app-container {
+  /* Add any other styles specific to your web application */
+  /* Set margin, padding, width, etc. as needed */
+  max-width: 960px; /* Optional: Set a maximum width for the container */
+  flex: 1; /* Add flex: 1 to make the container expand to fill available space */
 }
