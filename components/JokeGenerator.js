@@ -25,10 +25,8 @@ export default function JokeGenButtons() {
     <>
       <button type="button" onClick={handleButtonClick}>{buttonText}</button>
       <div>
-        <p>
-          {jokeSetup && <p>Joke Setup: {jokeSetup}</p>}
-          {jokeDelivery && <p>Joke Delivery: {jokeDelivery}</p>}
-        </p>
+        {jokeSetup ? (<p>Joke Setup: {jokeSetup}</p>) : ('')}
+        {jokeDelivery ? (<p>Joke Delivery: {jokeDelivery}</p>) : ('')}
       </div>
     </>
   );
