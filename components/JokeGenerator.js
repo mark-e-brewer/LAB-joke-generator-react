@@ -3,20 +3,20 @@ import getJoke from '../api/jokeData';
 
 export default function JokeGenButtons() {
   const [jokeSetup, setJokeSetup] = useState('');
-  const [jokeDelivery, setJokeDelivery] = useState('');
+  const [jokePunchline, setJokePunchline] = useState('');
   const [buttonText, setButtonText] = useState('Get a Joke');
 
   const handleButtonClick = async () => {
-    const fetchedJokeData = await getJoke();
+    const jokeDataObj = await getJoke();
     if (buttonText === 'Get a Joke') {
-      setJokeSetup(fetchedJokeData.setup);
       setButtonText('Get Punchline');
+      setJokeSetup(jokeDataObj.setup);
     } else if (buttonText === 'Get Punchline') {
-      setJokeDelivery(fetchedJokeData.delivery);
       setButtonText('Get Another Joke');
+      setJokePunchline(jokeDataObj.delivery);
     } else {
       setJokeSetup('');
-      setJokeDelivery('');
+      setJokePunchline('');
       setButtonText('Get a Joke');
     }
   };
@@ -26,7 +26,7 @@ export default function JokeGenButtons() {
       <button type="button" onClick={handleButtonClick}>{buttonText}</button>
       <div>
         {jokeSetup ? (<p>Joke Setup: {jokeSetup}</p>) : ('')}
-        {jokeDelivery ? (<p>Joke Delivery: {jokeDelivery}</p>) : ('')}
+        {jokePunchline ? (<p>Joke Delivery: {jokePunchline}</p>) : ('')}
       </div>
     </>
   );

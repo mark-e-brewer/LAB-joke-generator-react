@@ -12,6 +12,9 @@ export default function NavBar() {
         <Link passHref href="/">
           <Navbar.Brand>Got Jokes!</Navbar.Brand>
         </Link>
+        <Link passHref href="/read">
+          <Navbar.Brand>Read</Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
