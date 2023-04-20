@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {
   Navbar, Container, Nav,
 } from 'react-bootstrap';
+import Signout from './Signout';
 
 export default function NavBar() {
   return (
@@ -12,9 +13,10 @@ export default function NavBar() {
         <Link passHref href="/">
           <Navbar.Brand>Got Jokes!</Navbar.Brand>
         </Link>
-        <Link passHref href="/read">
-          <Navbar.Brand>Read</Navbar.Brand>
+        <Link passHref href="/term">
+          <Navbar.Brand>Term</Navbar.Brand>
         </Link>
+        <Signout />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
