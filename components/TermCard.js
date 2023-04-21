@@ -23,6 +23,9 @@ export default function TermCards({ termObj, onUpdate }) {
           <Link href={`/terms/${termObj.firebaseKey}`} passHref>
             <Button variant="primary" className="m-2 btn">View</Button>
           </Link>
+          <Link href={`/terms/edit/${termObj.firebaseKey}`} passHref>
+            <Button variant="info" className="m-2 btn">Edit</Button>
+          </Link>
           <Button variant="danger" onClick={deleteThisTerm} className="m-2 btn">
             Delete
           </Button>
@@ -36,7 +39,6 @@ TermCards.propTypes = {
   termObj: PropTypes.shape({
     title: PropTypes.string,
     definition: PropTypes.string,
-    time: PropTypes.number,
     uid: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,

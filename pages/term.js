@@ -20,7 +20,7 @@ export default function TermsPage() {
   return (
     <>
       <div className="text-center">
-        <Link href="/read" passHref>
+        <Link href="/terms/new" passHref>
           <Button>Add Term</Button>
         </Link>
         <div className="d-flex flex-wrap">

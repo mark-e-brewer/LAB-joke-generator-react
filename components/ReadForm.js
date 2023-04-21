@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { createTerm, updateTerm } from '../api/termAPI';
@@ -8,7 +8,7 @@ import { useAuth } from '../utils/context/authContext';
 const initialState = {
   title: '',
   definition: '',
-  time: 0,
+  firebaseKey: '',
 };
 
 export default function TermForm({ obj }) {
@@ -16,11 +16,17 @@ export default function TermForm({ obj }) {
   const router = useRouter();
   const { user } = useAuth();
 
+  useEffect(() => {
+    if (obj.firebaseKey) {
+      setTermData(obj);
+    }
+  }, [obj]);
+
   const handleSubmit = (e) => {
-    e.preventDefualt();
+    e.preventDefault();
     if (obj.firebaseKey) {
       updateTerm(termData)
-        .then(() => router.push(`/term/${obj.firebaseKey}`));
+        .then(() => router.push(`/terms/${obj.firebaseKey}`));
     } else {
       const payload = { ...termData, uid: user.uid };
       createTerm(payload).then(({ name }) => {
@@ -39,6 +45,7 @@ export default function TermForm({ obj }) {
 
   return (
     <div>
+      <h3 className="mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Term</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">
           Term Name:
@@ -59,7 +66,7 @@ export default function TermForm({ obj }) {
           value={termData.definition}
         />
         <button type="submit" className="term-form__button">
-          Submit
+          {obj.firebaseKey ? 'Update' : 'Submit'} Term
         </button>
       </form>
     </div>
@@ -73,9 +80,9 @@ TermForm.propTypes = {
     firebaseKey: PropTypes.string,
     time: PropTypes.number,
     uid: PropTypes.string,
-  }).isRequired,
+  }),
 };
 
-TermForm.defualtProps = {
+TermForm.defaultProps = {
   obj: initialState,
 };
